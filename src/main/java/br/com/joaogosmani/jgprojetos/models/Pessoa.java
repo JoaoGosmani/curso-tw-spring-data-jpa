@@ -7,6 +7,7 @@ import org.springframework.format.annotation.DateTimeFormat.ISO;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.MappedSuperclass;
 import jakarta.persistence.OneToOne;
@@ -30,7 +31,7 @@ public abstract class Pessoa extends Entidade {
     @DateTimeFormat(iso = ISO.DATE)
     private LocalDate dataNascimento;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "endereco_id_fk", nullable = false)
     private Endereco endereco;
 
