@@ -1,6 +1,7 @@
 package br.com.joaogosmani.jgprojetos.models;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.DateTimeFormat.ISO;
@@ -8,6 +9,7 @@ import org.springframework.format.annotation.DateTimeFormat.ISO;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 
 @Entity
@@ -24,6 +26,9 @@ public class Funcionario extends Pessoa {
     @ManyToOne
     @JoinColumn(name = "cargo_id_fk", nullable = false)
     private Cargo cargo;
+
+    @ManyToMany(mappedBy = "equipe")
+    private List<Projeto> projetos;
 
     public LocalDate getDataAdmissao() {
         return dataAdmissao;
@@ -47,6 +52,14 @@ public class Funcionario extends Pessoa {
 
     public void setCargo(Cargo cargo) {
         this.cargo = cargo;
+    }
+
+    public List<Projeto> getProjetos() {
+        return projetos;
+    }
+
+    public void setProjetos(List<Projeto> projetos) {
+        this.projetos = projetos;
     }
 
 }
