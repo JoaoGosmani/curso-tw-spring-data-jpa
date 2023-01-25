@@ -41,4 +41,12 @@ public class Funcionario extends Pessoa {
         this.dataDemissao = dataDemissao;
     }
 
+    public Cargo getCargo() {
+        return cargo;
+    }
+
+    public void setCargo(Cargo cargo) {
+        this.cargo = cargo;
+    }
+
 }
